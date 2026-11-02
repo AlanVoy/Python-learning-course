@@ -1,12 +1,17 @@
 num = int(input("Введите число:"))
-minnum = num
-ss = 0
-while num != 0:
-    ss = ss + 1
-    if minnum > num:
-        minnum = num
+count = 0
+if num != 0:
+    possum = 0
+    negsum = 0
+while  num != 0:
+    if num > 0:
+        possum = possum + num
+    else:
+        negsum = negsum + num
+    count += 1
     num = int(input("Введите число:"))
-if ss == 0:
+if count == 0:
     print("Числа не введены")
 else:
-    print("Минимум: ",minnum)
+    print("Сумма положительных:",possum)
+    print("Сумма отрицательных:",negsum)

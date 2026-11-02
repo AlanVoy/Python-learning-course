@@ -1,14 +1,13 @@
 num = int(input("Введите число: "))
 count = 0
-total = 0
-average = 0
+if num != 0 :
+    count_seven = 0
 while num != 0:
-    count = count + 1
-    total = total + num
+    if (num % 7) == 0:
+        count_seven += 1
+    count += 1
     num = int(input("Введите число: "))
-if count == 0:
-    print("Числа не введены")
-else:
-    average = total / count
-    print("Сумма:",total)
-    print("Среднее:",average)
+if count == 0 or count_seven == 0:
+    print("Число, кратное 7, не найдено")
+else :
+    print("Число, кратное 7, найдено")

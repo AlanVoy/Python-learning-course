@@ -1,20 +1,22 @@
-num = int(input("Введите число - ограничитель: "))
-
-if num < 2 :
-    print("Ошибка ввода. Число должно быть больше 1")
+count_pred = int(input("Количество чисел(не менее 2): "))
+if count_pred < 2 :
+    count_check_pred = 0
+    while count_pred < 2 :
+        if count_check_pred == 3 :
+            exit()
+        else :
+            print("Число не менее 2")
+            count_pred = int(input("Количество чисел(не менее 2): "))
+            count_check_pred += 1
 else :
-    print("2", end="")
-    if num > 2 :
-        count = 3
-        while count <= num :
-            flag = False
-            count_check = 2
-            while not flag and count_check <= count ** 0.5 :
-                if count % count_check == 0 :
-                    flag = True
-                    break
-                else :
-                    count_check += 1
-            if not flag :
-                print(",", count, end="")
-            count += 1
+    total = 0
+    count_of_all = 1
+    count_total = 0
+    num = int(input("Введите число: "))
+    while count_of_all < count_pred :
+            total += num
+            num = int(input("Введите число: "))
+            if num == total :
+                count_total += 1
+            count_of_all += 1
+    print("Количество чисел, удовлетворяющих условию: ", count_total)

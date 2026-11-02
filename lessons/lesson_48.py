@@ -1,35 +1,42 @@
-quantity_num = int(input("Укажите количество(не менее 2): "))
-if quantity_num < 2 :
+import sys
+#
+#
+#
+qantity = int(input("Укажите количество вводных данных(не менее 1): "))
+if qantity < 1 :
     count_enter_quantity = 1
-    while count_enter_quantity != 3 and quantity_num < 2 :
-        print("Количество не может быть менее 2")
-        quantity_num = int(input("Укажите количество(не менее 2): "))
+    while count_enter_quantity < 3 and qantity < 1 :
+        print("Количество не должно быть меньше 1")
+        qantity = int(input("Укажите количество вводных данных(не менее 1): "))
         count_enter_quantity += 1
-    if count_enter_quantity == 3 and quantity_num < 2:
-        print("Количество неверных вводных данных привысило лимит. Автоматическое закрытие программы")
-        exit()
-if quantity_num > 1 :
-    count_enter_num = 0
-    count_change_sequence = 0
-    while count_enter_num < quantity_num :
-        if count_enter_num == 0 :
-            num = int(input("Введите число: "))
-            count_enter_num += 1
-        elif count_enter_num == 1 :
-            past_num = num
-            num = int(input("Введите число: "))
-            count_enter_num += 1
+    if count_enter_quantity == 3 and qantity < 1 :
+        print("Исчерпан лимит попыток. Завершение программы")
+        sys.exit()
+if qantity >= 1 :
+    count_enter = 0
+    text = str()
+    text_total = ""
+    count_actual_enter = 0
+    while count_enter < qantity :
+        num = input("Введите число: ")
+        flag = False
+        if text_total != "" :
+            while text != "" and not flag :
+                space = text.find(" ")
+                if int(text[:space]) == int(num) :
+                    flag = True
+                    continue
+                text = text[space + 1:]
+            if not flag :
+                text_total = text_total + num + " "
+                count_actual_enter += 1
         else :
-            while num >= past_num and count_enter_num < quantity_num :
-                past_num = num
-                num = int(input("Введите число: "))
-                count_enter_num += 1
-                if past_num > num :
-                    count_change_sequence += 1
-            while num <= past_num and count_enter_num < quantity_num :
-                past_num = num
-                num = int(input("Введите число: "))
-                count_enter_num += 1
-                if num > past_num :
-                    count_change_sequence += 1
-    print("Смен последовательности: ", count_change_sequence)
+            text_total = text_total + num + " "
+            count_actual_enter += 1
+        text = text_total
+        count_enter += 1
+    while text_total != "" :
+        space_enter = text_total.find(" ")
+        print(text_total[:space_enter])
+        text_total = text_total[space_enter + 1:]
+    print("Количество различных чисел:", count_actual_enter)

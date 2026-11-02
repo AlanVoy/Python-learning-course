@@ -1,7 +1,4 @@
-age = int(input("Введите ваш возраст: "))
-if age < 18:
-    print("Доступ запрещён")
-elif age >= 18 and age <= 65:
-    print("Доступ разрешён")
-elif age > 65:
-    print("Требуется дополнительная проверка")
+num = 1
+while num >=1 and num <= 5:
+    print(num)
+    num = num + 1

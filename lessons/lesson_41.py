@@ -1,30 +1,30 @@
-count_all = int(input("Введите количество(не менее 2): "))
-if count_all < 2 :
-    count_exit = 0
-    while count_all < 2 :
-        if count_exit == 3 :
-            exit()
+quantity_num = int(input("Укажите количество чисел(не менее 3): "))
+if quantity_num < 3 :
+    count_enter_quantity = 1
+    while count_enter_quantity < 3 and quantity_num < 3 :
+        print("Количество не менее 3 !")
+        quantity_num = int(input("Укажите количество чисел(не менее 3): "))
+        count_enter_quantity += 1
+else :
+    count_local_maximum = 0
+    count_enter_num = 0
+    while count_enter_num < quantity_num :
+        if count_enter_num == 0 :
+            num_prev = int(input("Введите число: "))
+            count_enter_num += 1
+        elif count_enter_num == 1 :
+            num = int(input("Введите число: "))
+            count_enter_num += 1
+        elif count_enter_num == 2 :
+            num_post = int(input("Введите число: "))
+            if num_prev < num > num_post :
+                count_local_maximum += 1
+            count_enter_num += 1
         else :
-            print("Указано неверное количество")
-            count_all = int(input("Введите количество(не менее 2): "))
-            count_exit += 1
-count = 1
-num_stay = int()
-num_max = 1
-count_check = 1
-while count <= count_all :
-    num = int(input("Введите число: "))
-    if count > 1 :
-        if num_stay == num :
-            count += 1
-            count_check += 1
-            if count_check > num_max :
-                num_max = count_check
-        else :
-            count_check = 1
-            num_stay = num
-            count += 1
-    else :
-        count += 1
-        num_stay = num
-print(num_max)
+            num_prev = num
+            num = num_post
+            num_post = int(input("Введите число: "))
+            if num_prev < num > num_post :
+                count_local_maximum += 1
+            count_enter_num += 1
+    print("Количество локальных максимумов:",count_local_maximum)

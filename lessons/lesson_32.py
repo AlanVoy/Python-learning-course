@@ -1,22 +1,26 @@
-num = int(input("Введите число: "))
-flag = False
-if num > 9 :
-    num_red = num
-    count_all = 0
-    while num_red > 9 :
-        num_red = num_red // 10
-        count_all += 1
-    count_check = (count_all + 1) // 2
-    flag = True
-    num_red = num
-    while count_check > 0 and flag:
-        if ((num //(10 ** count_all)) % 10) == (num_red % 10 ):
-            count_all = count_all - 1
-            count_check = count_check - 1
-            num_red = num_red // 10
-        else :
-            flag = False
-if flag or (num < 10 and num >= 0):
-    print("Число является палиндромом")
-else : 
-    print("Число не является палиндромом")
+num = int(input("Кол-во чисел для вывода: "))
+if num > 0 :
+    if num > 0 and num < 3 :
+        num_str = str()
+        count = num
+        num_n = 0
+        while count > 0 :
+            num_str = num_str + str(num_n)
+            num_n += 1
+            count -= 1
+        print(num_str)
+    elif num > 2 :
+        num_str = str("0,1")
+        count = num - 2
+        num_1 = 0
+        num_2 = 1
+        num_save = int()
+        while count > 0 :
+            num_save = num_1
+            num_1 = num_2
+            num_2 = num_save + num_1
+            num_str = num_str + "," + str(num_2)
+            count -= 1
+        print(num_str)
+else :
+    print("Ошибка ввода")

@@ -1,20 +1,18 @@
-num = abs(int(input("Введите число: ")))
-find = int(input("Введите цифру от 0 до 9 для поиска: "))
-count_exit = 0
-count_find = 0
-while find > 9 or find < 0:
-    print("Ошибка, введите цифру от 0 до 9")
-    find = int(input("Введите цифру от 0 до 9 для поиска: "))
-    count_exit += 1
-    if count_exit == 3 :
-        exit()
-if num == 0 and find == 0 :
-    count_find += 1
-while num > 0 :
-    if find == (num % 10) :
-        count_find += 1
-    num = num // 10
-if count_find == 0 :
-    print("Цифра не найдена")
+num_1 = int(input("Введите первое число: "))
+num_2 = int(input("Введите второе число: "))
+flag = False
+if num_2 == 0 or num_1 == 0 :
+    count = max(abs(num_1),abs(num_2))
 else :
-    print("Цифра найдена. Количество",count_find)
+    count = min(abs(num_1),abs(num_2))
+nod = int()
+if num_1 == 0 and num_2 == 0:
+    print("Оба числа равны 0, поиск НОД невозможен")
+    exit()
+while not flag :
+    if (num_1 % count) == 0 == (num_2 % count) :
+        flag = True
+        nod = count
+    else :
+        count = count - 1
+print("Наибольший общий делитель (НОД):",nod)

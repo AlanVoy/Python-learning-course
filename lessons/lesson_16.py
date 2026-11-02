@@ -1,10 +1,17 @@
 num = int(input("Введите число: "))
-maxnum = num
+count = 0
+if num != 0:
+    maxnum = num
+    minnum = num
+
 while num != 0:
-    if num > maxnum:
+    if maxnum < num:
         maxnum = num
+    if minnum > num:
+        minnum = num
+    count += 1
     num = int(input("Введите число: "))
-if maxnum == 0:
+if count == 0 :
     print("Числа не введены")
-else:
-    print("Максимум:", maxnum)
+else :
+    print("Максимум:",maxnum,"Минимум:",minnum)

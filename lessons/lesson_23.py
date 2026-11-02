@@ -1,10 +1,11 @@
 num = int(input("Введите число: "))
 num = abs(num)
-count = 0
-if num != 0:
-    while num != 0:
+minofnum = num % 10
+if num != 0 :
+    while num != 0 :
+        if (num % 10) < minofnum :
+            minofnum = num % 10
         num = num // 10
-        count += 1
-else:
-    count += 1
-print("Количество цифр:",count)
+    print("Минимальная цифра:",minofnum)
+else :
+    print("Минимальная цифра:",minofnum)

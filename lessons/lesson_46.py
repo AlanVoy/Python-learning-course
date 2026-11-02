@@ -1,21 +1,27 @@
-quantity_num = int(input("Укажите количество(не менее 2): "))
-if quantity_num < 2 :
-    check_quantity_num = 1
-    while quantity_num < 2 and check_quantity_num < 3 :
-        print("Количество не может быть меньше 2")
-        quantity_num = int(input("Укажите количество(не менее 2): "))
-        check_quantity_num += 1
-else :
-    count_enter = 0
-    count_more_prev = 0
-    while count_enter < quantity_num :
-        if count_enter == 0 :
-            num = int(input("Введите число: "))
-            count_enter += 1
-        else :
+quantity_of_num = int(input("Укажите кол-во вводных данных: "))
+if quantity_of_num < 2 :
+    count_chek_quantity = 1
+    while count_chek_quantity < 3 and quantity_of_num < 2 :
+        print("Кол-во не меньше 2")
+        quantity_of_num = int(input("Укажите кол-во вводных данных: "))
+        count_chek_quantity += 1
+if quantity_of_num > 1 :
+    num = int(input("Введите число: "))
+    count_of_enter = 1
+    flag = False
+    if count_of_enter == 1 :
+        num_prev = num
+        num = int(input("Введите число: "))
+        count_of_enter += 1
+    if quantity_of_num > 2 :
+        difference = num - num_prev
+        while not flag and count_of_enter < quantity_of_num :
             num_prev = num
             num = int(input("Введите число: "))
-            if num > num_prev :
-                count_more_prev += 1
-            count_enter += 1
-    print("Чисел строго больше предыдущих:", count_more_prev)
+            if num - num_prev != difference :
+                flag = True
+            count_of_enter += 1
+    if flag :
+        print("Не является арифметической прогрессией")
+    else :
+        print("Арифметическая прогрессия")

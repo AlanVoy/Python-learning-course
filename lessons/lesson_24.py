@@ -1,8 +1,12 @@
 num = int(input("Введите число: "))
+flag = False
 num = abs(num)
-total = 0
-if num != 0:
-    while num != 0:
-        total = total + (num % 10)
+while num > 0 and not flag :
+    if (num % 10) == 7 :
+        flag = True
+    else :
         num = num // 10
-print("Сумма цифр:",total)
+if flag :
+    print("Цифра 7 найдена")
+else :
+    print("Цифра 7 не найдена")

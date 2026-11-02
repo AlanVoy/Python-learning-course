@@ -1,18 +1,19 @@
-num_1 = int(input("Введите первое число: "))
-num_2 = int(input("Введите второе число: "))
-flag = False
-if num_2 == 0 or num_1 == 0 :
-    count = max(abs(num_1),abs(num_2))
+num = int(input("Введите число для проверки: "))
+if num < 0 :
+    print("Ошибка ввода. Число не должно быть отрицательным.")
 else :
-    count = min(abs(num_1),abs(num_2))
-nod = int()
-if num_1 == 0 and num_2 == 0:
-    print("Оба числа равны 0, поиск НОД невозможен")
-    exit()
-while not flag :
-    if (num_1 % count) == 0 == (num_2 % count) :
-        flag = True
-        nod = count
+    if num > 9 :
+        num_check = num
+        count = 0
+        total = 0
+        while num_check > 0 :
+            num_check = num_check // 10
+            count += 1
+        num_check = num
+        while num_check > 0 and total < num :
+            total = total + ((num_check % 10) ** count)
+            num_check = num_check // 10
+    if num < 10 or total == num :
+        print("Это число Армстронга")
     else :
-        count = count - 1
-print("Наибольший общий делитель (НОД):",nod)
+        print("Это НЕ число Армстронга")

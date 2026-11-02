@@ -1,29 +1,20 @@
-count_all = int(input("Введите кол-во чисел: "))
-count = 1
-if count_all > 0 :
-    flag = True
-    while count <= count_all :
-        num = int(input("введите число "))
-        if count == 1 :
-            num_1 = num
-        if  count == 2 :
-            while num == num_1 and count < count_all:
-                num = int(input("введите число "))
-                count += 1
-            if num_1 > num :
-                num_2 = num
-            else :
-                num_2 = num_1
-                num_1 = num
-        elif num > num_1 :
-            num_2 = num_1
-            num_1 = num
-        elif (num < num_1 and num > num_2) :
-            num_2 = num
-        count += 1
-if count_all <= 1 :
-    print("Невозмонжо найти")
-elif num_1 == num_2 :
-    print("Невозмонжо найти")
+sequence_length = int(input("Введите желаемое кол-во(не менее 2): "))
+if sequence_length < 2 :
+    count_check_sequence = 1
+    while sequence_length < 2 and count_check_sequence < 3 :
+        print("Кол-во не может быть менее 2")
+        sequence_length = int(input("Введите желаемое кол-во(не менее 2): "))
+        count_check_sequence += 1
 else :
-    print(num_2)
+    count_lenght = 1
+    while count_lenght <= sequence_length :
+        if count_lenght < 2 :
+            num = int(input("Введите число: "))
+            changing_parity = 0
+        else :
+            num_previous = num
+            num = int(input("Введите число: "))
+            if (num % 2) != (num_previous % 2) :
+                changing_parity += 1
+        count_lenght += 1
+    print("Кол-во переходов:", changing_parity)

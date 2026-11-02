@@ -1,13 +1,20 @@
-num = int(input("Введите число: "))
-count = num - 1
-flag = False
-while count > 1  :
-    if num % count == 0 :
-        flag = True
-        break 
-    else :
-        count = count - 1
-if flag or num < 2:
-    print("Число не простое")
+num = int(input("Введите число - ограничитель: "))
+
+if num < 2 :
+    print("Ошибка ввода. Число должно быть больше 1")
 else :
-    print("Число простое")
+    print("2", end="")
+    if num > 2 :
+        count = 3
+        while count <= num :
+            flag = False
+            count_check = 2
+            while not flag and count_check <= count ** 0.5 :
+                if count % count_check == 0 :
+                    flag = True
+                    break
+                else :
+                    count_check += 1
+            if not flag :
+                print(",", count, end="")
+            count += 1

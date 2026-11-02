@@ -1,13 +1,11 @@
 num = int(input("Введите число: "))
-count = 0
+maxofnum = 0
 if num != 0 :
-    count_seven = 0
-while num != 0:
-    if (num % 7) == 0:
-        count_seven += 1
-    count += 1
-    num = int(input("Введите число: "))
-if count == 0 or count_seven == 0:
-    print("Число, кратное 7, не найдено")
+    num = abs(num)
+    while num != 0 :
+        if (num % 10) > maxofnum :
+            maxofnum = num % 10
+        num = num // 10
+    print("Максимальная цифра:",maxofnum)
 else :
-    print("Число, кратное 7, найдено")
+    print("Максимальная цифра:",maxofnum)

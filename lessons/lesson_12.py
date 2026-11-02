@@ -1,8 +1,10 @@
 num = int(input("Введите число: "))
-if num <= 0:
-    print("Число должно быть больше нуля")
-else num > 0:
-    a = 1
-    while a <= num:
-        print(a)
-        a = a + 1
+maxnum = num
+while num != 0:
+    if num > maxnum:
+        maxnum = num
+    num = int(input("Введите число: "))
+if maxnum == 0:
+    print("Числа не введены")
+else:
+    print("Максимум:", maxnum)
