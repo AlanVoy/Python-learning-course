@@ -57,4 +57,4 @@ if quantity > 0 and (position > 0 and position <= quantity) :
         count_position -= 1
     space_position = text_for_position.find(" ")
     print(text_orderly)
-    print("Число на позиции",position,":",int(text_for_position[:space_position]))
+    print(f"Число на позиции {position}:",int(text_for_position[:space_position]))
