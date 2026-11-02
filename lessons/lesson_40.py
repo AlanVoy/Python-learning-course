@@ -5,7 +5,7 @@ if sequence_length < 2 :
         print("Кол-во не может быть менее 2")
         sequence_length = int(input("Введите желаемое кол-во(не менее 2): "))
         count_check_sequence += 1
-else :
+if sequence_length > 1 :
     count_lenght = 1
     while count_lenght <= sequence_length :
         if count_lenght < 2 :

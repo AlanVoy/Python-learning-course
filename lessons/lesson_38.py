@@ -8,7 +8,7 @@ if count_pred < 2 :
             print("Число не менее 2")
             count_pred = int(input("Количество чисел(не менее 2): "))
             count_check_pred += 1
-else :
+if count_pred > 1:
     total = 0
     count_of_all = 1
     count_total = 0

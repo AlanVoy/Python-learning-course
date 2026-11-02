@@ -6,7 +6,7 @@ while find > 9 or find < 0:
     print("Ошибка, введите цифру от 0 до 9")
     find = int(input("Введите цифру от 0 до 9 для поиска: "))
     count_exit += 1
-    if count_exit == 3 :
+    if count_exit == 3 and (find > 9 or find < 0):
         exit()
 if num == 0 and find == 0 :
     count_find += 1

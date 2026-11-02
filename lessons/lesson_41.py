@@ -5,7 +5,7 @@ if quantity_num < 3 :
         print("Количество не менее 3 !")
         quantity_num = int(input("Укажите количество чисел(не менее 3): "))
         count_enter_quantity += 1
-else :
+if quantity_num > 2 :
     count_local_maximum = 0
     count_enter_num = 0
     while count_enter_num < quantity_num :

@@ -5,7 +5,7 @@ if quantity_num < 2 :
         print("Количество не может быть меньше 2")
         quantity_num = int(input("Укажите количество(не менее 2): "))
         check_quantity_num += 1
-else :
+if quantity_num > 1 :
     count_enter = 0
     count_more_prev = 0
     while count_enter < quantity_num :

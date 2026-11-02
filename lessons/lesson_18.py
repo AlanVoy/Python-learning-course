@@ -1,7 +1,6 @@
 num = int(input("Введите число: "))
 count = 0
-if num != 0 :
-    count_seven = 0
+count_seven = 0
 while num != 0:
     if (num % 7) == 0:
         count_seven += 1
