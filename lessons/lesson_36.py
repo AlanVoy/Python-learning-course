@@ -22,8 +22,8 @@ if count_all > 0 :
             num_2 = num
         count += 1
 if count_all <= 1 :
-    print("Невозмонжо найти")
+    print("Невозможно найти")
 elif num_1 == num_2 :
-    print("Невозмонжо найти")
+    print("Невозможно найти")
 else :
     print(num_2)
