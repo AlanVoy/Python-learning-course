@@ -1,11 +1,11 @@
 {
   "title": "Реестр заданий курса Python",
-  "version": 4,
+  "version": 5,
   "updated": "2026-11-03",
   "source_repository": "https://github.com/AlanVoy/Python-learning-course",
   "source_branch": "main",
   "source_git_sha_json": "5a2164de25f15432254ad2d72d2a8801e3b950d4",
-  "sync_note": "Локальная обновлённая версия на основе опубликованного GitHub-реестра и подтверждённых тестов из чата. НЕ загружена в GitHub. Исторические записи нормализованы (не байтовая копия исходного JSON).",
+  "sync_note": "Сведения об инвентаризации сверены с GitHub main 03.11.2026: lesson_52.py присутствует. Исторические записи 01–51 нормализованы по предыдущему реестру; полный автоматический прогон уроков не выполнялся. Эти файлы подготовлены для локальной замены, прямой push не выполнен.",
   "rules": [
     "Проверять смысловой алгоритм до назначения новой задачи",
     "Повтор — только как явно обозначенное закрепление, исправление или усложнение",
@@ -19,7 +19,9 @@
     "github_main_canonical_lessons_at_audit": 51,
     "local_registry_implementations_including_lesson_52": 53,
     "local_canonical_lessons_including_lesson_52": 52,
-    "lesson_52_in_github_main": false
+    "lesson_52_in_github_main": true,
+    "github_main_python_files_current": 53,
+    "github_main_canonical_lessons_current": 52
   },
   "semantic_duplicates": [
     {
@@ -363,8 +365,8 @@
         "short-circuit"
       ],
       "verification": "15/15 пользовательских контрольных тестов в чате; Unicode-краевые случаи не проверены",
-      "status": "принято в обучении; файл отсутствовал в GitHub main на момент проверки",
-      "source": "код и результаты предоставлены пользователем в чате"
+      "status": "принято в обучении; файл подтверждён в GitHub main",
+      "source": "исходник проверен в GitHub main; результаты 15 контрольных тестов предоставлены пользователем в чате"
     }
   ],
   "learning_focus": [
