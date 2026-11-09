@@ -1,0 +1,584 @@
+<!doctype html><html lang="ru"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Python — шпаргалка 08.11.2026</title><style>pre { line-height: 125%; }
+td.linenos .normal { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+span.linenos { color: #666666; background-color: transparent; padding-left: 5px; padding-right: 5px; }
+td.linenos .special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+span.linenos.special { color: #000000; background-color: #ffffc0; padding-left: 5px; padding-right: 5px; }
+.highlight .hll { background-color: #ffffcc }
+.highlight { background: #f0f0f0; }
+.highlight .c { color: #60A0B0; font-style: italic } /* Comment */
+.highlight .err { border: 1px solid #F00 } /* Error */
+.highlight .k { color: #007020; font-weight: bold } /* Keyword */
+.highlight .o { color: #666 } /* Operator */
+.highlight .ch { color: #60A0B0; font-style: italic } /* Comment.Hashbang */
+.highlight .cm { color: #60A0B0; font-style: italic } /* Comment.Multiline */
+.highlight .cp { color: #007020 } /* Comment.Preproc */
+.highlight .cpf { color: #60A0B0; font-style: italic } /* Comment.PreprocFile */
+.highlight .c1 { color: #60A0B0; font-style: italic } /* Comment.Single */
+.highlight .cs { color: #60A0B0; background-color: #FFF0F0 } /* Comment.Special */
+.highlight .gd { color: #A00000 } /* Generic.Deleted */
+.highlight .ge { font-style: italic } /* Generic.Emph */
+.highlight .ges { font-weight: bold; font-style: italic } /* Generic.EmphStrong */
+.highlight .gr { color: #F00 } /* Generic.Error */
+.highlight .gh { color: #000080; font-weight: bold } /* Generic.Heading */
+.highlight .gi { color: #00A000 } /* Generic.Inserted */
+.highlight .go { color: #888 } /* Generic.Output */
+.highlight .gp { color: #C65D09; font-weight: bold } /* Generic.Prompt */
+.highlight .gs { font-weight: bold } /* Generic.Strong */
+.highlight .gu { color: #800080; font-weight: bold } /* Generic.Subheading */
+.highlight .gt { color: #04D } /* Generic.Traceback */
+.highlight .kc { color: #007020; font-weight: bold } /* Keyword.Constant */
+.highlight .kd { color: #007020; font-weight: bold } /* Keyword.Declaration */
+.highlight .kn { color: #007020; font-weight: bold } /* Keyword.Namespace */
+.highlight .kp { color: #007020 } /* Keyword.Pseudo */
+.highlight .kr { color: #007020; font-weight: bold } /* Keyword.Reserved */
+.highlight .kt { color: #902000 } /* Keyword.Type */
+.highlight .m { color: #40A070 } /* Literal.Number */
+.highlight .s { color: #4070A0 } /* Literal.String */
+.highlight .na { color: #4070A0 } /* Name.Attribute */
+.highlight .nb { color: #007020 } /* Name.Builtin */
+.highlight .nc { color: #0E84B5; font-weight: bold } /* Name.Class */
+.highlight .no { color: #60ADD5 } /* Name.Constant */
+.highlight .nd { color: #555; font-weight: bold } /* Name.Decorator */
+.highlight .ni { color: #D55537; font-weight: bold } /* Name.Entity */
+.highlight .ne { color: #007020 } /* Name.Exception */
+.highlight .nf { color: #06287E } /* Name.Function */
+.highlight .nl { color: #002070; font-weight: bold } /* Name.Label */
+.highlight .nn { color: #0E84B5; font-weight: bold } /* Name.Namespace */
+.highlight .nt { color: #062873; font-weight: bold } /* Name.Tag */
+.highlight .nv { color: #BB60D5 } /* Name.Variable */
+.highlight .ow { color: #007020; font-weight: bold } /* Operator.Word */
+.highlight .w { color: #BBB } /* Text.Whitespace */
+.highlight .mb { color: #40A070 } /* Literal.Number.Bin */
+.highlight .mf { color: #40A070 } /* Literal.Number.Float */
+.highlight .mh { color: #40A070 } /* Literal.Number.Hex */
+.highlight .mi { color: #40A070 } /* Literal.Number.Integer */
+.highlight .mo { color: #40A070 } /* Literal.Number.Oct */
+.highlight .sa { color: #4070A0 } /* Literal.String.Affix */
+.highlight .sb { color: #4070A0 } /* Literal.String.Backtick */
+.highlight .sc { color: #4070A0 } /* Literal.String.Char */
+.highlight .dl { color: #4070A0 } /* Literal.String.Delimiter */
+.highlight .sd { color: #4070A0; font-style: italic } /* Literal.String.Doc */
+.highlight .s2 { color: #4070A0 } /* Literal.String.Double */
+.highlight .se { color: #4070A0; font-weight: bold } /* Literal.String.Escape */
+.highlight .sh { color: #4070A0 } /* Literal.String.Heredoc */
+.highlight .si { color: #70A0D0; font-style: italic } /* Literal.String.Interpol */
+.highlight .sx { color: #C65D09 } /* Literal.String.Other */
+.highlight .sr { color: #235388 } /* Literal.String.Regex */
+.highlight .s1 { color: #4070A0 } /* Literal.String.Single */
+.highlight .ss { color: #517918 } /* Literal.String.Symbol */
+.highlight .bp { color: #007020 } /* Name.Builtin.Pseudo */
+.highlight .fm { color: #06287E } /* Name.Function.Magic */
+.highlight .vc { color: #BB60D5 } /* Name.Variable.Class */
+.highlight .vg { color: #BB60D5 } /* Name.Variable.Global */
+.highlight .vi { color: #BB60D5 } /* Name.Variable.Instance */
+.highlight .vm { color: #BB60D5 } /* Name.Variable.Magic */
+.highlight .il { color: #40A070 } /* Literal.Number.Integer.Long */
+body{margin:0;background:#f4f7fb;color:#1b293b;font:15px/1.65 system-ui,-apple-system,"Segoe UI",Arial,sans-serif}aside{position:fixed;top:0;bottom:0;left:0;width:245px;overflow:auto;padding:28px 20px;background:#15243b;color:white;box-sizing:border-box}aside a{display:block;color:#c7d9f3;text-decoration:none;padding:9px 7px;border-radius:7px;font-size:13px}aside a:hover{background:#284565}aside h3{font-size:17px}main{max-width:1030px;margin:0 auto 0 265px;padding:36px 48px 100px}article{background:white;padding:38px 44px;border-radius:18px;box-shadow:0 6px 28px #23375412}h1{font-size:31px;color:#152b4c;line-height:1.3}h2{color:#164a88;border-bottom:2px solid #dce8f6;padding-bottom:8px;margin-top:45px}h3{color:#087c80;margin-top:30px}h4{color:#6d45a5}a{color:#1260a8}table{border-collapse:collapse;width:100%;display:block;overflow-x:auto;margin:16px 0 22px}th{background:#e7f0fa;color:#17416d;text-align:left}td,th{padding:10px 12px;border:1px solid #dce4ee;vertical-align:top}tr:nth-child(even) td{background:#f9fbfe}p code,li code,td code{background:#eaf0fb;color:#9c2f62;padding:2px 5px;border-radius:4px;font-size:.91em}pre{overflow:auto;border-radius:9px;padding:16px;background:#f8f8f8;border:1px solid #e3e7ef;font-size:13px}blockquote{border-left:4px solid #d39a35;background:#fff8e8;padding:12px 18px;margin:18px 0}strong{color:#243e62}li{margin-bottom:4px}html{scroll-behavior:smooth}h2,h3,h4{scroll-margin-top:20px}@media(max-width:950px){aside{position:static;width:auto;height:auto}main{margin:0;padding:15px}article{padding:18px}}</style></head><body><aside><h3>🐍 Python · Навигация</h3><a href="#навигация">Навигация</a><a href="#1-быстрый-поиск-что-использовать">1. Быстрый поиск: что использовать</a><a href="#2-базовый-синтаксис-и-типы">2. Базовый синтаксис и типы</a><a href="#3-условия-циклы-и-управление">3. Условия, циклы и управление</a><a href="#4-строки-и-коллекции">4. Строки и коллекции</a><a href="#5-функции-урок-61">5. Функции — урок №61</a><a href="#6-типовые-приёмы-и-ошибки">6. Типовые приёмы и ошибки</a><a href="#7-план-обучения-и-статусы">7. План обучения и статусы</a><a href="#8-ссылки-и-контроль-старых-работ">8. Ссылки и контроль старых работ</a><p style="font-size:12px;color:#9eb4d0">🟢 Практика · 🔵 Теория · 🟡 Знакомство · ⚪ Впереди</p></aside><main><article><h1>Python — интерактивная шпаргалка и учебный план</h1>
+<p><strong>Актуализировано: 08.11.2026.</strong> Исходник: справочник от 04.11.2026. Дополнено темами, разобранными после практического задания №60. Это справочник, а не готовое решение будущего задания №61.</p>
+<blockquote>
+<p><strong>Легенда освоения:</strong> 🟢 <strong>Практика</strong> — применялось в решённых заданиях; 🔵 <strong>Теория</strong> — разобрали и проверили вопросами; 🟡 <strong>Знакомство</strong> — показано, но не закреплено; ⚪ <strong>Впереди</strong> — ещё не изучали. Статусы относятся к конкретным темам, а не всему разделу.</p>
+</blockquote>
+<h2 id="навигация">Навигация</h2>
+<ol>
+<li><a href="#1-%D0%B1%D1%8B%D1%81%D1%82%D1%80%D1%8B%D0%B9-%D0%BF%D0%BE%D0%B8%D1%81%D0%BA-%D1%87%D1%82%D0%BE-%D0%B8%D1%81%D0%BF%D0%BE%D0%BB%D1%8C%D0%B7%D0%BE%D0%B2%D0%B0%D1%82%D1%8C">Быстрый поиск: что использовать</a></li>
+<li><a href="#2-%D0%B1%D0%B0%D0%B7%D0%BE%D0%B2%D1%8B%D0%B9-%D1%81%D0%B8%D0%BD%D1%82%D0%B0%D0%BA%D1%81%D0%B8%D1%81-%D0%B8-%D1%82%D0%B8%D0%BF%D1%8B">Базовый синтаксис и типы</a></li>
+<li><a href="#3-%D1%83%D1%81%D0%BB%D0%BE%D0%B2%D0%B8%D1%8F-%D1%86%D0%B8%D0%BA%D0%BB%D1%8B-%D0%B8-%D1%83%D0%BF%D1%80%D0%B0%D0%B2%D0%BB%D0%B5%D0%BD%D0%B8%D0%B5">Условия, циклы и управление</a></li>
+<li><a href="#4-%D1%81%D1%82%D1%80%D0%BE%D0%BA%D0%B8-%D0%B8-%D0%BA%D0%BE%D0%BB%D0%BB%D0%B5%D0%BA%D1%86%D0%B8%D0%B8">Строки и коллекции</a></li>
+<li><a href="#5-%D1%84%D1%83%D0%BD%D0%BA%D1%86%D0%B8%D0%B8--%D1%83%D1%80%D0%BE%D0%BA-61">Функции — урок №61</a></li>
+<li><a href="#6-%D1%82%D0%B8%D0%BF%D0%BE%D0%B2%D1%8B%D0%B5-%D0%BF%D1%80%D0%B8%D1%91%D0%BC%D1%8B-%D0%B8-%D0%BE%D1%88%D0%B8%D0%B1%D0%BA%D0%B8">Типовые приёмы и ошибки</a></li>
+<li><a href="#7-%D0%BF%D0%BB%D0%B0%D0%BD-%D0%BE%D0%B1%D1%83%D1%87%D0%B5%D0%BD%D0%B8%D1%8F-%D0%B8-%D1%81%D1%82%D0%B0%D1%82%D1%83%D1%81%D1%8B">План обучения и статусы</a></li>
+<li><a href="#8-%D1%81%D1%81%D1%8B%D0%BB%D0%BA%D0%B8-%D0%B8-%D0%BA%D0%BE%D0%BD%D1%82%D1%80%D0%BE%D0%BB%D1%8C-%D1%81%D1%82%D0%B0%D1%80%D1%8B%D1%85-%D1%80%D0%B0%D0%B1%D0%BE%D1%82">Ссылки и контроль старых работ</a></li>
+</ol>
+<h2 id="1-быстрый-поиск-что-использовать">1. Быстрый поиск: что использовать</h2>
+<table>
+<thead>
+<tr>
+  <th>Хочу сделать</th>
+  <th>Что искать</th>
+  <th>Статус</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Получить ввод и вывести ответ</td>
+  <td><code>input()</code>, <code>print()</code>, <code>int()</code>, <code>str()</code></td>
+  <td>🟢</td>
+</tr>
+<tr>
+  <td>Проверить условие</td>
+  <td><code>if</code>, <code>elif</code>, <code>else</code>, <code>and</code>, <code>or</code>, <code>not</code></td>
+  <td>🟢</td>
+</tr>
+<tr>
+  <td>Повторять до выполнения условия</td>
+  <td><code>while</code>, <code>break</code>, <code>continue</code></td>
+  <td>🟢</td>
+</tr>
+<tr>
+  <td>Перебрать значения</td>
+  <td><code>for</code>, <code>range()</code></td>
+  <td>🟢</td>
+</tr>
+<tr>
+  <td>Проверить текст и убрать пробелы</td>
+  <td><code>.isdigit()</code>, <code>.strip()</code></td>
+  <td>🔵</td>
+</tr>
+<tr>
+  <td>Изменить строку</td>
+  <td><code>.lower()</code>, <code>.upper()</code>, <code>.replace()</code>, <code>.split()</code></td>
+  <td>🟢 / 🔵</td>
+</tr>
+<tr>
+  <td>Найти, добавить, удалить элемент списка</td>
+  <td>индексы, <code>.append()</code>, <code>.remove()</code>, <code>.pop()</code></td>
+  <td>🟢 / 🔵</td>
+</tr>
+<tr>
+  <td>Обрабатывать записи по полям</td>
+  <td>словарь <code>dict</code>, <code>.items()</code>, <code>.values()</code></td>
+  <td>🟢</td>
+</tr>
+<tr>
+  <td>Оформить повторяемую операцию</td>
+  <td><code>def</code>, параметры, <code>return</code></td>
+  <td>🔵</td>
+</tr>
+<tr>
+  <td>Передать любое число аргументов</td>
+  <td><code>*args</code>, <code>**kwargs</code></td>
+  <td>🔵</td>
+</tr>
+<tr>
+  <td>Подсказать ожидаемые типы</td>
+  <td><code>: int</code>, <code>-&gt; str</code>, <code>-&gt; None</code></td>
+  <td>🔵</td>
+</tr>
+<tr>
+  <td>Описать функцию</td>
+  <td><code>docstring</code>, <code>.__doc__</code>, <code>help()</code></td>
+  <td>🔵</td>
+</tr>
+<tr>
+  <td>Обработать исключение</td>
+  <td><code>try</code> / <code>except</code></td>
+  <td>⚪</td>
+</tr>
+<tr>
+  <td>Прочитать и сохранить файл</td>
+  <td><code>with open</code>, <code>pathlib</code>, <code>csv</code>, <code>json</code></td>
+  <td>⚪</td>
+</tr>
+</tbody>
+</table>
+<h2 id="2-базовый-синтаксис-и-типы">2. Базовый синтаксис и типы</h2>
+<h3 id="2-1-ввод-вывод-преобразование-типов">2.1. Ввод, вывод, преобразование типов</h3>
+<p><strong><code>print(*values, sep=&quot; &quot;, end=&quot;\n&quot;)</code> — вывод на экран (практиковали).</strong> В скобках указывают одно или несколько значений через запятую. По умолчанию между ними ставится пробел (<code>sep=&quot; &quot;</code>), а в конце — перевод строки (<code>end=&quot;\n&quot;</code>). <code>sep</code> и <code>end</code> задаются именованными аргументами. Например:</p>
+<div class="highlight"><pre><span></span><span class="n">position</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Позиция&quot;</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>  <span class="c1"># Позиция3:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Позиция &quot;</span><span class="p">,</span> <span class="n">position</span><span class="p">,</span> <span class="s2">&quot;:&quot;</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">)</span>  <span class="c1"># Позиция 3:</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Готово&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;!&quot;</span><span class="p">)</span>                  <span class="c1"># Готово!</span>
+</pre></div>
+
+<p><strong><code>input(prompt)</code> — ввод (практиковали).</strong> Выводит необязательную подсказку и ожидает ввод пользователя. Результат <strong>всегда <code>str</code></strong>, даже если введено <code>123</code>. Пример: <code>name = input(&quot;Имя: &quot;)</code>.</p>
+<p><strong><code>int(value)</code> — преобразование в целое число (практиковали).</strong> <code>int(&quot;25&quot;)</code> даёт <code>25</code>; <code>int(&quot;-3&quot;)</code> даёт <code>-3</code>. <code>int(&quot;2.5&quot;)</code> и <code>int(&quot;привет&quot;)</code> вызывают <code>ValueError</code>. <code>int(2.9)</code> даёт <code>2</code> (отбрасывает дробную часть по направлению к нулю). Для чтения числа: <code>age = int(input(&quot;Возраст: &quot;))</code>.</p>
+<p><strong><code>str(value)</code> — преобразование в строку (практиковали).</strong> Например, <code>str(25)</code> даёт <code>&quot;25&quot;</code>. Нужно, если соединяем число с текстом оператором <code>+</code>: <code>&quot;Возраст: &quot; + str(age)</code>.</p>
+<p><strong><code>type(value)</code> — тип объекта (практиковали).</strong> <code>type(25)</code> — <code>&lt;class 'int'&gt;</code>, <code>type(&quot;25&quot;)</code> — <code>&lt;class 'str'&gt;</code>. Полезно при отладке; <code>type(x)</code> не преобразует значение.</p>
+<p><strong><code>list(iterable)</code> — создать список из перебираемого объекта (ознакомились).</strong> <code>list(map(int, [&quot;1&quot;, &quot;2&quot;]))</code> даёт <code>[1, 2]</code>; <code>list(&quot;кот&quot;)</code> даёт <code>['к', 'о', 'т']</code>. Список — отдельная структура данных, которую будем изучать подробно позже.</p>
+<h3 id="2-2-переменные-и-арифметика">2.2. Переменные и арифметика</h3>
+<p><strong><code>name = value</code> — присваивание (практиковали).</strong> Запоминает ссылку на значение под именем <code>name</code>. <code>x = 10</code>, затем <code>x = 20</code> заменяет прежнее значение имени; <code>=</code> не сравнивает значения.</p>
+<p><strong><code>+=</code>, <code>-=</code>, <code>*=</code>, <code>/=</code>, <code>//=</code>, <code>%=</code>, `</strong>=<code>— составные присваивания.**</code>x += 3<code>означает увеличение</code>x<code>на 3;</code>x *= 2<code>— умножение на 2. С числами работали неоднократно. Со строками</code>text += &quot;!&quot;<code>соединяет строки;</code>text += 3<code>вызовет</code>TypeError`.</p>
+<p><strong><code>del name</code> — удаление имени (разобрали).</strong> После <code>x = 5; del x</code> обращение к <code>x</code> вызовет <code>NameError</code>, если имя не было создано заново. Можно <code>del a, b</code>. Обычно вручную удалять локальные переменные не требуется; <code>del</code> не гарантирует немедленного освобождения памяти.</p>
+<p><strong>Числовые операторы (практиковали):</strong> <code>+</code> сумма, <code>-</code> разность, <code>*</code> произведение, <code>/</code> обычное деление (результат <code>float</code>), <code>//</code> деление с округлением вниз, <code>%</code> остаток, <code>**</code> степень. Например, <code>-7 // 2 == -4</code> (не <code>-3</code>), <code>-7 % 2 == 1</code>. Деление на ноль (<code>/</code>, <code>//</code>, <code>%</code>) вызывает <code>ZeroDivisionError</code>. Скобки <code>()</code> управляют порядком действий.</p>
+<p><strong><code>abs(number)</code> — модуль числа (практиковали).</strong> <code>abs(-15)</code> даёт <code>15</code>; <code>abs(15)</code> — <code>15</code>. Часто нужен для обработки цифр отрицательного целого числа без учёта знака.</p>
+<p><strong><code>min(...)</code> и <code>max(...)</code> — минимум и максимум (практиковали / разобрали).</strong> Можно передать несколько отдельных значений (<code>min(3, -1, 8)</code>) или одну непустую коллекцию (<code>max([3, 8, 1])</code>). Сравнение строк — лексикографическое, а не числовое: <code>min(&quot;9&quot;, &quot;10&quot;)</code> не является поиском минимального числа. Для пустого списка <code>min([])</code> возникает <code>ValueError</code>; <code>min([], default=0)</code> вернёт <code>0</code>. Для чисел из строки сначала требуется преобразование в <code>int</code>.</p>
+<h2 id="3-условия-циклы-и-управление">3. Условия, циклы и управление</h2>
+<h3 id="3-1-ветвления-сравнения-логика-циклы">3.1. Ветвления, сравнения, логика, циклы</h3>
+<p><strong><code>if condition:</code> / <code>elif condition:</code> / <code>else:</code> — ветвление (практиковали).</strong> <code>if</code> проверяет первое условие; <code>elif</code> — следующее, если предыдущие ложны; <code>else</code> выполняется, если ни одно условие не подошло. <code>elif</code> и <code>else</code> не могут стоять сами по себе без соответствующего <code>if</code>; у <code>else</code> нет условия. После <code>:</code> идёт блок с одинаковым отступом (обычно 4 пробела).</p>
+<p><strong>Сравнения:</strong> <code>==</code> равно, <code>!=</code> не равно, <code>&lt;</code> меньше, <code>&lt;=</code> не больше, <code>&gt;</code> больше, <code>&gt;=</code> не меньше. Результат — <code>True</code> или <code>False</code>. Например, <code>3 &lt;= 5</code> → <code>True</code>. Цепочка <code>0 &lt;= age &lt;= 120</code> проверяет обе границы.</p>
+<p><strong>Логика:</strong> <code>and</code> требует истинности обоих условий; <code>or</code> — хотя бы одного; <code>not</code> меняет истинность на противоположную. Например, <code>age &gt;= 18 and age &lt; 65</code>. Выражения <code>and</code>/<code>or</code> вычисляются с сокращением: если результат уже определён, правая часть может не вычисляться.</p>
+<p><strong><code>while condition:</code> — цикл по условию (практиковали).</strong> Перед каждым повтором проверяет условие. Если оно сразу ложно, тело не выполняется ни разу. При счётчике не забывайте менять его, иначе возможен бесконечный цикл:</p>
+<div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">while</span> <span class="n">count</span> <span class="o">&lt;</span> <span class="mi">3</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">count</span><span class="p">)</span>
+    <span class="n">count</span> <span class="o">+=</span> <span class="mi">1</span>
+</pre></div>
+
+<p><strong><code>for variable in iterable:</code> — перебор (изучаем, тема не закрыта).</strong> На каждой итерации присваивает переменной очередной элемент. В <code>for i in range(3):</code> значения <code>i</code>: 0, 1, 2. Изменение <code>i</code> внутри цикла не меняет следующий элемент <code>range()</code>. После цикла переменная обычно содержит последнее присвоенное значение. Если итераций не было, новое имя не появится.</p>
+<p><strong><code>range(stop)</code> / <code>range(start, stop[, step])</code> — диапазон целых чисел (изучаем).</strong> Начало включено, конец исключён. <code>range(2, 7, 2)</code> даёт 2, 4, 6. <code>range(5)</code> даёт 0–4. <code>range(5, 0, -2)</code> даёт 5, 3, 1. Шаг <code>0</code> запрещён (<code>ValueError</code>). <code>range</code> сам по себе не список, но его можно перебирать в <code>for</code>.</p>
+<p><strong><code>break</code> — выйти из ближайшего цикла (практиковали).</strong> Работает в <code>while</code> и <code>for</code>; при вложенных циклах завершает только внутренний. <strong><code>continue</code> — перейти к следующей итерации</strong> (разобрали): пропускает оставшуюся часть тела цикла; в <code>while</code> важно не забывать обновлять условие завершения.</p>
+<p><strong><code>import sys</code> и <code>sys.exit()</code> — завершение скрипта (разобрали).</strong> Сначала импортируют модуль <code>sys</code>, затем вызывают <code>sys.exit()</code> при необходимости. Это вызывает <code>SystemExit</code>; при обычном запуске скрипт завершается, если исключение не перехвачено. <code>break</code> в отличие от него завершает только цикл. Встроенный <code>exit()</code> встречался в коде, но для скриптов лучше <code>sys.exit()</code>.</p>
+<h3 id="3-2-типовые-конструкции">3.2. Типовые конструкции</h3>
+<div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">age</span> <span class="o">&lt;</span> <span class="mi">0</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Ошибка&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">age</span> <span class="o">&gt;=</span> <span class="mi">18</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Взрослый&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Несовершеннолетний&quot;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>  <span class="c1"># 2, 4, 6, 8</span>
+</pre></div>
+
+<p><code>range(start, stop, step)</code>: начало включено, конец не включён. <code>break</code> выходит из ближайшего цикла, <code>continue</code> пропускает остаток текущей итерации. <code>sys.exit()</code> завершает скрипт (если <code>SystemExit</code> не перехвачено).</p>
+<h2 id="4-строки-и-коллекции">4. Строки и коллекции</h2>
+<h3 id="4-1-строки-и-форматирование">4.1. Строки и форматирование</h3>
+<p><strong><code>len(value)</code> — длина (практиковали).</strong> <code>len(&quot;кот&quot;)</code> даёт <code>3</code>; <code>len(&quot;a b&quot;)</code> даёт <code>3</code>, потому что пробел тоже символ. Работает также со списками и другими коллекциями; не работает непосредственно с <code>int</code>.</p>
+<p><strong><code>text.upper()</code> / <code>text.lower()</code> — регистр (практиковали).</strong> Возвращают новую строку с верхним/нижним регистром: <code>&quot;PyThOn&quot;.lower()</code> → <code>&quot;python&quot;</code>. Исходная строка не меняется, если не присвоить результат: <code>text = text.lower()</code>.</p>
+<p><strong><code>text.split(sep=None, maxsplit=-1)</code> — разбить строку (ознакомились).</strong> Без аргументов разбивает по любым последовательностям пробельных символов и не создаёт пустые элементы на краях: <code>&quot;  10   20  &quot;.split()</code> → <code>[&quot;10&quot;, &quot;20&quot;]</code>. С явным разделителем: <code>&quot;a,b,c&quot;.split(&quot;,&quot;)</code> → <code>[&quot;a&quot;, &quot;b&quot;, &quot;c&quot;]</code>. <code>&quot;a  b&quot;.split(&quot; &quot;)</code> → <code>[&quot;a&quot;, &quot;&quot;, &quot;b&quot;]</code>: повторные пробелы здесь дают пустой элемент. <code>maxsplit=1</code> ограничивает количество разделений: <code>&quot;a b c&quot;.split(maxsplit=1)</code> → <code>[&quot;a&quot;, &quot;b c&quot;]</code>. Результат — <strong>список строк</strong>, а не чисел.</p>
+<p><strong><code>text.replace(old, new, count=-1)</code> — заменить подстроку (разобрали).</strong> <code>&quot;a b c&quot;.replace(&quot; &quot;, &quot;&quot;)</code> → <code>&quot;abc&quot;</code>; <code>&quot;кот-кот&quot;.replace(&quot;кот&quot;, &quot;пёс&quot;, 1)</code> → <code>&quot;пёс-кот&quot;</code>. Возвращает новую строку, не изменяя исходную. Если требуется убрать обычные пробелы, <code>replace(&quot; &quot;, &quot;&quot;)</code> удалит именно их, а не все виды пробельных символов.</p>
+<p><strong><code>text.find(sub, start=0, end=...)</code> — найти позицию подстроки (разобрали).</strong> <code>&quot;12 345 67&quot;.find(&quot; &quot;, 3)</code> → <code>6</code>. Индексация начинается с нуля; <code>start</code> включается, <code>end</code> (если указан) исключается. Если совпадение не найдено, возвращает <code>-1</code>. Для поиска после определённой позиции: <code>text.find(&quot; &quot;, position + 1)</code>. Метод ищет <strong>символы</strong>, а не числовые значения.</p>
+<p><strong><code>f&quot;...{expression}...&quot;</code> — f-строка (разобрали).</strong> Подставляет результат выражения внутрь текста: <code>position = 3; print(f&quot;Число на позиции {position}:&quot;)</code> → <code>Число на позиции 3:</code>. Пробелы пишутся вручную там, где нужны. Можно вставлять выражения: <code>f&quot;Сумма: {2 + 3}&quot;</code>. Для буквальных фигурных скобок пишут <code>{{</code> и <code>}}</code>.</p>
+<p><strong><code>a + b</code> и <code>text += suffix</code> — соединение строк (практиковали / разобрали).</strong> <code>&quot;Привет&quot; + &quot;!&quot;</code> → <code>&quot;Привет!&quot;</code>; <code>text += &quot;!&quot;</code> присваивает переменной новую соединённую строку. Строки неизменяемые; операторы не редактируют символы внутри прежнего объекта.</p>
+<h3 id="4-2-индексация-isdigit-strip-сравнения">4.2. Индексация, <code>.isdigit()</code>, <code>.strip()</code>, сравнения</h3>
+<p><strong><code>text[index]</code> — доступ к символу (разобрали).</strong> Индексы начинаются с нуля: <code>&quot;кот&quot;[0]</code> → <code>&quot;к&quot;</code>, <code>&quot;кот&quot;[2]</code> → <code>&quot;т&quot;</code>. Отрицательный индекс отсчитывает с конца: <code>&quot;кот&quot;[-1]</code> → <code>&quot;т&quot;</code>. Если индекс выходит за пределы строки, возникает <code>IndexError</code>. Строки неизменяемы: <code>text[0] = &quot;К&quot;</code> недопустимо.</p>
+<p><strong><code>a == b</code> / <code>a != b</code> — сравнение строк и символов (разобрали).</strong> <code>&quot;кот&quot; == &quot;кот&quot;</code> → <code>True</code>, <code>&quot;кот&quot; == &quot;Кот&quot;</code> → <code>False</code>: регистр учитывается. Для символов на конкретной позиции используют <code>text1[i] == text2[i]</code>. Если длины строк различаются, нужно заранее учитывать возможный <code>IndexError</code>. Для сравнения без учёта регистра можно использовать <code>text1.lower() == text2.lower()</code>. Оператор <code>is</code> для проверки равенства текста не используют.</p>
+<p><strong><code>text.isdigit()</code> — проверка цифровых символов (разобрали).</strong> Вызывается с пустыми скобками, поскольку дополнительных аргументов не нужно. Возвращает <code>True</code>, если строка непустая и каждый символ — цифровой: <code>&quot;123&quot;.isdigit()</code> → <code>True</code>; <code>&quot;12 3&quot;.isdigit()</code>, <code>&quot;-12&quot;.isdigit()</code>, <code>&quot;12.5&quot;.isdigit()</code> и <code>&quot;&quot;.isdigit()</code> → <code>False</code>. <strong>Не равнозначно</strong> проверке возможности преобразовать строку через <code>int()</code>: некоторые Unicode-цифры проходят <code>isdigit()</code>, но не подходят для <code>int()</code>.</p>
+<p><strong><code>text.strip(chars=None)</code> — убрать символы с краёв (разобрали).</strong> Без аргументов удаляет пробелы, табуляции и переводы строк <strong>в начале и конце</strong>: <code>&quot;  Имя  &quot;.strip()</code> → <code>&quot;Имя&quot;</code>; <code>&quot;  &quot;.strip()</code> → <code>&quot;&quot;</code>. Пробелы <strong>внутри</strong> строки сохраняются. <code>&quot;--имя--&quot;.strip(&quot;-&quot;)</code> → <code>&quot;имя&quot;</code>. Аргумент <code>chars</code> — набор символов для удаления с обоих краёв, а не подстрока. Метод возвращает новую строку. Проверка <code>if not name.strip():</code> выявляет пустое или состоящее только из пробельных символов название.</p>
+<p><strong>Почему после методов пишут <code>()</code> (разобрали).</strong> <code>text.isdigit</code> — ссылка на метод; <code>text.isdigit()</code> — его вызов и получение <code>True</code> или <code>False</code>. Методы <code>.lower()</code>, <code>.upper()</code>, <code>.strip()</code>, <code>.isdigit()</code> можно вызывать без аргументов, а <code>.find(&quot; &quot;)</code> и <code>.remove(20)</code> требуют аргумент. Не путать вызов метода с круглой записью кортежа <code>(10, 20)</code>.</p>
+<p><strong><code>items.remove(value)</code> — удалить значение из списка (разобрали).</strong> Удаляет <strong>первое</strong> совпадение и изменяет сам список:</p>
+<div class="highlight"><pre><span></span><span class="n">items</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">20</span><span class="p">]</span>
+<span class="n">items</span><span class="o">.</span><span class="n">remove</span><span class="p">(</span><span class="mi">20</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">items</span><span class="p">)</span>  <span class="c1"># [10, 30, 20]</span>
+</pre></div>
+
+<p>Если значения нет, возникает <code>ValueError</code>. Метод возвращает <code>None</code>, поэтому <code>items = items.remove(20)</code> — ошибка в логике: вместо списка переменная получит <code>None</code>. <code>remove()</code> — метод <strong>списка</strong>, не строки и не кортежа.</p>
+<p><strong><code>items.pop(index=-1)</code> — удалить по индексу и вернуть элемент (ознакомились).</strong> <code>items = [10, 20, 30]; x = items.pop(1)</code> удалит <code>20</code>, вернёт его в <code>x</code>, а список станет <code>[10, 30]</code>. Без аргумента удаляет последний элемент. Неверный индекс или вызов на пустом списке приводит к <code>IndexError</code>. Главное отличие: <code>remove(20)</code> ищет <strong>значение</strong>, а <code>pop(1)</code> использует <strong>индекс</strong>.</p>
+<p><strong><code>tuple</code> — кортеж (разобрали).</strong> <code>point = (10, 25)</code> хранит упорядоченные элементы; <code>point[0]</code> → <code>10</code>. В отличие от списка <code>[]</code>, элементы кортежа нельзя заменить, добавить или удалить обычными методами списка: <code>point[0] = 5</code> вызовет <code>TypeError</code>. Повторяющиеся значения разрешены, типы могут отличаться. Для одного элемента нужна запятая: <code>(10,)</code> — кортеж, <code>(10)</code> — число. Внутри кортежа могут находиться изменяемые объекты, например списки; неизменяемость кортежа не делает вложенные списки неизменяемыми.</p>
+<p><strong>Состояние освоения:</strong> <code>.isdigit()</code>, <code>.strip()</code>, <code>.remove()</code>, кортежи, сравнение символов и индексацию <strong>разобрали</strong>, но не отмечаем автоматически как закреплённые самостоятельными заданиями. <code>.pop()</code> показали для сравнения с <code>.remove()</code>; подробное изучение списков ещё впереди.</p>
+<h3 id="4-3-последовательности-и-преобразования">4.3. Последовательности и преобразования</h3>
+<p><strong><code>map(function, iterable)</code> — применить функцию к элементам (ознакомились).</strong> <code>map(int, [&quot;5&quot;, &quot;10&quot;, &quot;-3&quot;])</code> создаёт <strong>итератор</strong>, выдающий числа при переборе. Чтобы увидеть все значения как список: <code>list(map(int, [&quot;5&quot;, &quot;10&quot;, &quot;-3&quot;]))</code> → <code>[5, 10, -3]</code>. Обратите внимание: <code>int</code> передаётся <strong>без круглых скобок</strong> — <code>map(int, ...)</code>, не <code>map(int(), ...)</code>. Итератор <code>map</code> обычно одноразовый; повторное преобразование уже полностью пройденного итератора в список даст пустой список. Если встретится <code>&quot;abc&quot;</code>, <code>int</code> вызовет <code>ValueError</code> при обработке этого элемента.</p>
+<p><strong>Совместная работа <code>split()</code> + <code>map()</code> + <code>min()</code> (ознакомились):</strong></p>
+<div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;15 8 -4 20&quot;</span>
+<span class="n">parts</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>              <span class="c1"># [&#39;15&#39;, &#39;8&#39;, &#39;-4&#39;, &#39;20&#39;] — строки</span>
+<span class="n">numbers</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">map</span><span class="p">(</span><span class="nb">int</span><span class="p">,</span> <span class="n">parts</span><span class="p">))</span>  <span class="c1"># [15, 8, -4, 20] — числа</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">numbers</span><span class="p">))</span>              <span class="c1"># -4</span>
+</pre></div>
+
+<p>Если строка пустая или содержит только пробелы, <code>split()</code> вернёт пустой список, а <code>min()</code> без <code>default</code> вызовет <code>ValueError</code>.</p>
+<h2 id="5-функции-урок-61">5. Функции — урок №61</h2>
+<p><strong>Статус: 🔵 теория пройдена, вопросы проверены; практическое задание №61 ещё не выполнено.</strong> Рекурсию пока откладываем.</p>
+<h3 id="5-1-def-объявление-и-вызов">5.1. <code>def</code>: объявление и вызов</h3>
+<table>
+<thead>
+<tr>
+  <th>Конструкция</th>
+  <th>Для чего</th>
+  <th>Пример</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>def name():</code></td>
+  <td>Объявить функцию</td>
+  <td><code>def greet():</code></td>
+</tr>
+<tr>
+  <td><code>name()</code></td>
+  <td>Выполнить функцию</td>
+  <td><code>greet()</code></td>
+</tr>
+<tr>
+  <td><code>def f(a, b):</code></td>
+  <td>Определить параметры</td>
+  <td><code>def add(a, b):</code></td>
+</tr>
+<tr>
+  <td><code>f(2, 3)</code></td>
+  <td>Передать позиционные аргументы</td>
+  <td><code>add(2, 3)</code></td>
+</tr>
+<tr>
+  <td><code>f(b=3, a=2)</code></td>
+  <td>Передать именованные аргументы</td>
+  <td><code>add(b=3, a=2)</code></td>
+</tr>
+<tr>
+  <td><code>def f(a, b=1):</code></td>
+  <td>Значение параметра по умолчанию</td>
+  <td><code>f(5)</code></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">greet</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Гость&quot;</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Привет,&quot;</span><span class="p">,</span> <span class="n">name</span><span class="p">)</span>
+
+<span class="n">greet</span><span class="p">(</span><span class="s2">&quot;Антон&quot;</span><span class="p">)</span>  <span class="c1"># Привет, Антон</span>
+<span class="n">greet</span><span class="p">()</span>          <span class="c1"># Привет, Гость</span>
+</pre></div>
+
+<p><strong>Объявление не вызывает функцию.</strong> Тело выполняется при вызове. Обязательные параметры ставят перед параметрами со значением по умолчанию.</p>
+<h3 id="5-2-return-print-none">5.2. <code>return</code>, <code>print()</code>, <code>None</code></h3>
+<table>
+<thead>
+<tr>
+  <th>Выражение</th>
+  <th>Действие</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>print(value)</code></td>
+  <td>Показать значение, не возвращая его как результат функции</td>
+</tr>
+<tr>
+  <td><code>return value</code></td>
+  <td>Вернуть значение и сразу завершить функцию</td>
+</tr>
+<tr>
+  <td><code>return a, b</code></td>
+  <td>Вернуть кортеж из двух значений</td>
+</tr>
+<tr>
+  <td>Отсутствует <code>return</code></td>
+  <td>Неявно возвращается <code>None</code></td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calculate</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span>
+
+<span class="n">summation</span><span class="p">,</span> <span class="n">difference</span> <span class="o">=</span> <span class="n">calculate</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">summation</span><span class="p">)</span>  <span class="c1"># 14</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">difference</span><span class="p">)</span> <span class="c1"># 6</span>
+</pre></div>
+
+<p>После выполненного <code>return</code> следующие строки тела функции не выполняются. <code>return</code> может находиться в разных ветвях <code>if</code>.</p>
+<h3 id="5-3-локальные-и-глобальные-имена">5.3. Локальные и глобальные имена</h3>
+<div class="highlight"><pre><span></span><span class="n">number</span> <span class="o">=</span> <span class="mi">10</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">show</span><span class="p">():</span>
+    <span class="n">number</span> <span class="o">=</span> <span class="mi">20</span>  <span class="c1"># локальное имя</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span>
+
+<span class="n">show</span><span class="p">()</span>        <span class="c1"># 20</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">number</span><span class="p">)</span> <span class="c1"># 10</span>
+</pre></div>
+
+<p>Функция может читать глобальное имя, если оно не перекрыто локальным. <code>global number</code> разрешает переназначать глобальное имя, но для обычной логики предпочтительнее передавать данные параметрами и возвращать результат через <code>return</code>.</p>
+<h3 id="5-4-изменяемые-и-неизменяемые-объекты">5.4. Изменяемые и неизменяемые объекты</h3>
+<table>
+<thead>
+<tr>
+  <th>Действие внутри функции</th>
+  <th>Влияет на переданный объект?</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>data.append(40)</code> для списка</td>
+  <td>Да, изменяет тот же список</td>
+</tr>
+<tr>
+  <td><code>data[0] = 999</code> для списка</td>
+  <td>Да, изменяет элемент того же списка</td>
+</tr>
+<tr>
+  <td><code>data += [40]</code> для списка</td>
+  <td>Да, расширяет тот же список</td>
+</tr>
+<tr>
+  <td><code>data = [100, 200]</code></td>
+  <td>Нет, локальное имя ссылается на новый список</td>
+</tr>
+<tr>
+  <td><code>number += 5</code> для <code>int</code></td>
+  <td>Нет, локальное имя получает новое значение</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Изменяемые:</strong> <code>list</code>, <code>dict</code>, <code>set</code>. <strong>Неизменяемые:</strong> <code>int</code>, <code>float</code>, <code>str</code>, <code>bool</code>, <code>tuple</code> (но вложенный в кортеж список может изменяться).</p>
+<div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">change</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
+    <span class="n">data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">40</span><span class="p">)</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="p">[</span><span class="mi">100</span><span class="p">,</span> <span class="mi">200</span><span class="p">]</span>
+
+<span class="n">numbers</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="mi">30</span><span class="p">]</span>
+<span class="n">change</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">numbers</span><span class="p">)</span>  <span class="c1"># [10, 20, 30, 40]</span>
+</pre></div>
+
+<h3 id="5-5-args-и-kwargs">5.5. <code>*args</code> и <code>**kwargs</code></h3>
+<table>
+<thead>
+<tr>
+  <th>Синтаксис</th>
+  <th>При объявлении</th>
+  <th>При вызове</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>*</code></td>
+  <td><code>*args</code> собирает позиционные аргументы в <code>tuple</code></td>
+  <td><code>f(*numbers)</code> распаковывает коллекцию</td>
+</tr>
+<tr>
+  <td><code>**</code></td>
+  <td><code>**kwargs</code> собирает именованные аргументы в <code>dict</code></td>
+  <td><code>f(**values)</code> распаковывает словарь</td>
+</tr>
+</tbody>
+</table>
+<div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">report</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">args</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="n">report</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;Мышь&quot;</span><span class="p">)</span>
+<span class="c1"># (10, 20)</span>
+<span class="c1"># {&#39;name&#39;: &#39;Мышь&#39;}</span>
+</pre></div>
+
+<p>Имена <code>args</code> и <code>kwargs</code> — соглашение, значимы именно звёздочки. При распаковке словаря ключи должны соответствовать именам параметров, если функция не принимает <code>**kwargs</code>.</p>
+<h3 id="5-6-передача-функции-как-аргумента">5.6. Передача функции как аргумента</h3>
+<div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">double</span><span class="p">(</span><span class="n">number</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">number</span> <span class="o">*</span> <span class="mi">2</span>
+
+<span class="k">def</span><span class="w"> </span><span class="nf">process</span><span class="p">(</span><span class="n">value</span><span class="p">,</span> <span class="n">operation</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">operation</span><span class="p">(</span><span class="n">value</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">process</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">double</span><span class="p">))</span>  <span class="c1"># 10</span>
+</pre></div>
+
+<p><code>double</code> — ссылка на функцию; <code>double(5)</code> — вызов функции.</p>
+<h3 id="5-7-документирование-docstring-doc-help">5.7. Документирование: <code>docstring</code>, <code>__doc__</code>, <code>help()</code></h3>
+<div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calculate</span><span class="p">(</span><span class="n">price</span><span class="p">,</span> <span class="n">quantity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Возвращает стоимость товара.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">price</span> <span class="o">*</span> <span class="n">quantity</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">calculate</span><span class="o">.</span><span class="vm">__doc__</span><span class="p">)</span>  <span class="c1"># Возвращает стоимость товара.</span>
+</pre></div>
+
+<p><code>docstring</code> располагают первым выражением в теле функции. В отличие от комментария <code>#</code>, её можно получить через <code>.__doc__</code> и <code>help()</code>.</p>
+<h3 id="5-8-аннотации-типов">5.8. Аннотации типов</h3>
+<div class="highlight"><pre><span></span><span class="k">def</span><span class="w"> </span><span class="nf">calculate</span><span class="p">(</span><span class="n">price</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">quantity</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">float</span><span class="p">:</span>
+    <span class="k">return</span> <span class="n">price</span> <span class="o">*</span> <span class="n">quantity</span>
+</pre></div>
+
+<ul>
+<li><code>price: float</code>, <code>quantity: int</code> — ожидаемые типы параметров.</li>
+<li><code>-&gt; float</code> — ожидаемый тип возвращаемого значения; <code>-&gt; None</code> — содержательное значение не ожидается.</li>
+<li><strong>Аннотации не обеспечивают проверку типов во время выполнения.</strong> VS Code/Pylance и другие анализаторы могут предупреждать о несоответствии.</li>
+<li>Пример: <code>calculate(&quot;100&quot;, 3)</code> вернёт строку <code>&quot;100100100&quot;</code>, хотя аннотация обещает <code>float</code>.</li>
+</ul>
+<h3 id="5-9-рекурсия-отложено">5.9. Рекурсия — отложено</h3>
+<p>🟡 Мы кратко познакомились с самовызовом функции и условием остановки, но <strong>по решению ученика тему пока не продолжаем и в ближайший тест не включаем</strong>.</p>
+<h2 id="6-типовые-приёмы-и-ошибки">6. Типовые приёмы и ошибки</h2>
+<h3 id="6-1-практические-алгоритмы-из-предыдущих-заданий">6.1. Практические алгоритмы из предыдущих заданий</h3>
+<ul>
+<li>Проверка входных данных и обработка неверного ввода.</li>
+<li>Циклы со стоп-значением, счётчики, накопители, флаги.</li>
+<li>Минимум, максимум, среднее с защитой от деления на ноль.</li>
+<li>Обработка цифр через <code>abs()</code>, <code>% 10</code>, <code>// 10</code>.</li>
+<li>Обработка списков записей-словарей: поиск по <code>id</code>, изменение статуса, подсчёт, остатки склада.</li>
+<li>Проверка граничных случаев: ноль, отрицательные значения, пустая коллекция, отсутствие ключа или записи.</li>
+</ul>
+<h3 id="6-2-частые-ловушки">6.2. Частые ловушки</h3>
+<table>
+<thead>
+<tr>
+  <th>Ошибка</th>
+  <th>Правило</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td><code>&quot; 75 &quot;.isdigit()</code> → <code>True</code></td>
+  <td>На самом деле <code>False</code>; сначала <code>.strip()</code></td>
+</tr>
+<tr>
+  <td><code>items = items.remove(20)</code></td>
+  <td><code>.remove()</code> меняет список и возвращает <code>None</code></td>
+</tr>
+<tr>
+  <td><code>print()</code> вместо <code>return</code></td>
+  <td>Вывод на экран не равен возврату результата</td>
+</tr>
+<tr>
+  <td><code>data = [...]</code> вместо изменения списка</td>
+  <td>Присваивание меняет ссылку локального имени</td>
+</tr>
+<tr>
+  <td><code>number += 1</code> с <code>int</code></td>
+  <td>Не изменяет объект, на который ссылается внешняя переменная</td>
+</tr>
+<tr>
+  <td>Аннотация <code>-&gt; int</code> гарантирует <code>int</code></td>
+  <td>Нет, это подсказка анализатору типов</td>
+</tr>
+<tr>
+  <td><code>*args</code> — список</td>
+  <td>Нет, это кортеж</td>
+</tr>
+<tr>
+  <td><code>**kwargs</code> — кортеж</td>
+  <td>Нет, это словарь</td>
+</tr>
+</tbody>
+</table>
+<h2 id="7-план-обучения-и-статусы">7. План обучения и статусы</h2>
+<table>
+<thead>
+<tr>
+  <th>Этап</th>
+  <th>Состояние</th>
+  <th>Критерий</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+  <td>Базовый синтаксис, условия, циклы, строки, списки и словари</td>
+  <td>🟢 Практика до №60</td>
+  <td>Выполнены задания, включая обработку заказов и склада</td>
+</tr>
+<tr>
+  <td>Функции <code>def</code>, параметры, <code>return</code>, области видимости, <code>*args</code>, <code>**kwargs</code>, документация, аннотации</td>
+  <td>🔵 Теория урока №61</td>
+  <td>Пройдены контрольные вопросы; впереди общий тест и практика</td>
+</tr>
+<tr>
+  <td>Рекурсия</td>
+  <td>🟡 Отложено</td>
+  <td>Вернёмся по запросу</td>
+</tr>
+<tr>
+  <td>Обобщающий тест по материалу после №60</td>
+  <td>⏳ Следующий шаг</td>
+  <td>Проверить понимание всех изученных разделов функций, кроме рекурсии</td>
+</tr>
+<tr>
+  <td>Практическое задание №61</td>
+  <td>⏳ После теста</td>
+  <td>Самостоятельно написать программу с функциями, проверить крайние случаи</td>
+</tr>
+<tr>
+  <td><code>try</code> / <code>except</code>, обработка ошибок</td>
+  <td>⚪ Впереди</td>
+  <td>Безопасная обработка ошибок</td>
+</tr>
+<tr>
+  <td>Файлы, <code>pathlib</code>, CSV, JSON</td>
+  <td>⚪ Впереди</td>
+  <td>Реальная автоматизация файлов и данных</td>
+</tr>
+<tr>
+  <td>Модули, зависимости, тесты и мини-проекты</td>
+  <td>⚪ Впереди</td>
+  <td>Небольшие прикладные проекты</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Правила курса:</strong> сначала проверка текущей работы, потом новая; решения и подсказки не выдаются без запроса. Перед новыми практическими заданиями сверять алгоритмы с <code>EXERCISE_INDEX.md</code> / <code>.json</code>, чтобы не повторять ранее решённые задачи.</p>
+<h2 id="8-ссылки-и-контроль-старых-работ">8. Ссылки и контроль старых работ</h2>
+<h3 id="8-1-справочные-ресурсы">8.1. Справочные ресурсы</h3>
+<ul>
+<li><a href="https://docs.python.org/3/">Документация Python</a></li>
+<li><a href="https://docs.python.org/3/library/functions.html">Встроенные функции</a></li>
+<li><a href="https://docs.python.org/3/tutorial/controlflow.html#defining-functions">Функции: официальное руководство</a></li>
+<li><a href="https://github.com/AlanVoy/Python-learning-course/blob/main/EXERCISE_INDEX.md">Реестр заданий</a></li>
+<li><a href="https://github.com/AlanVoy/Python-learning-course/tree/main/lessons">Уроки</a></li>
+</ul>
+<h3 id="8-2-исторические-замечания-исходного-файла">8.2. Исторические замечания исходного файла</h3>
+<p>В исходной версии от 04.11 отмечались вопросы к <code>lesson_12.py</code>, <code>lesson_31.py</code>, <code>lesson_40.py</code>, <code>lesson_44.py</code>–<code>lesson_46.py</code>, <code>lesson_49.py</code> и условию <code>lesson_32.py</code>. Эти замечания <strong>не перепроверялись</strong> по текущему <code>main</code>; имена файлов могли измениться после перенумерации. Это не список подтверждённых текущих ошибок.</p>
+<hr />
+<p><em>Подготовлено на основе присланного файла от 04.11.2026 и пройденной в этой беседе теории. Не является автоматической сверкой с актуальным содержимым репозитория.</em></p>
+</article></main></body></html>
